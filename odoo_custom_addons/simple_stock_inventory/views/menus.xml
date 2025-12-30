@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Actions (must be defined before menus) -->
+        <record id="action_ssi_product" model="ir.actions.act_window">
+            <field name="name">Produits</field>
+            <field name="res_model">ssi.product</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_ssi_location" model="ir.actions.act_window">
+            <field name="name">Emplacements</field>
+            <field name="res_model">ssi.location</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_ssi_move" model="ir.actions.act_window">
+            <field name="name">Mouvements</field>
+            <field name="res_model">ssi.move</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_ssi_inventory" model="ir.actions.act_window">
+            <field name="name">Inventaires</field>
+            <field name="res_model">ssi.inventory</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu racine -->
+        <menuitem id="menu_ssi_root" name="Stock Simple" sequence="10"/>
+
+        <!-- Sous-menus -->
+        <menuitem id="menu_ssi_product" name="Produits" parent="menu_ssi_root" action="action_ssi_product" sequence="10"/>
+        <menuitem id="menu_ssi_location" name="Emplacements" parent="menu_ssi_root" action="action_ssi_location" sequence="20"/>
+        <menuitem id="menu_ssi_move" name="Mouvements" parent="menu_ssi_root" action="action_ssi_move" sequence="30"/>
+        <menuitem id="menu_ssi_inventory" name="Inventaires" parent="menu_ssi_root" action="action_ssi_inventory" sequence="40"/>
+    </data>
+</odoo>

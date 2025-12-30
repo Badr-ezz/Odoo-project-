@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_ssi_move_tree" model="ir.ui.view">
+            <field name="name">ssi.move.tree</field>
+            <field name="model">ssi.move</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="product_id"/>
+                    <field name="location_from_id"/>
+                    <field name="location_to_id"/>
+                    <field name="quantity"/>
+                    <field name="move_type"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_ssi_move_form" model="ir.ui.view">
+            <field name="name">ssi.move.form</field>
+            <field name="model">ssi.move</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_done" string="Valider" type="object" invisible="state != 'draft'" class="oe_highlight"/>
+                        <button name="action_cancel" string="Annuler" type="object" invisible="state != 'done'"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date" readonly="state != 'draft'"/>
+                                <field name="product_id" readonly="state != 'draft'"/>
+                                <field name="quantity" readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="location_from_id" readonly="state != 'draft'"/>
+                                <field name="location_to_id" readonly="state != 'draft'"/>
+                                <field name="move_type" readonly="True"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <field name="note" placeholder="Ajouter une note..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_ssi_move_search" model="ir.ui.view">
+            <field name="name">ssi.move.search</field>
+            <field name="model">ssi.move</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <field name="location_from_id"/>
+                    <field name="location_to_id"/>
+                    <filter string="Brouillon" name="draft" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Validé" name="done" domain="[('state', '=', 'done')]"/>
+                    <filter string="Annulé" name="cancel" domain="[('state', '=', 'cancel')]"/>
+                    <group expand="0" string="Grouper par">
+                        <filter string="Produit" name="group_product" context="{'group_by': 'product_id'}"/>
+                        <filter string="Type" name="group_type" context="{'group_by': 'move_type'}"/>
+                        <filter string="État" name="group_state" context="{'group_by': 'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

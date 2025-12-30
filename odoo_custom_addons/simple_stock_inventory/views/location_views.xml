@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_ssi_location_tree" model="ir.ui.view">
+            <field name="name">ssi.location.tree</field>
+            <field name="model">ssi.location</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="usage"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_ssi_location_form" model="ir.ui.view">
+            <field name="name">ssi.location.form</field>
+            <field name="model">ssi.location</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="usage"/>
+                            <field name="active"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_ssi_location_search" model="ir.ui.view">
+            <field name="name">ssi.location.search</field>
+            <field name="model">ssi.location</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="usage"/>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

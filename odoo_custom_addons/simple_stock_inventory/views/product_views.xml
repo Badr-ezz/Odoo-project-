@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_ssi_product_tree" model="ir.ui.view">
+            <field name="name">ssi.product.tree</field>
+            <field name="model">ssi.product</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="default_code"/>
+                    <field name="barcode"/>
+                    <field name="qty_on_hand"/>
+                    <field name="cost_price"/>
+                    <field name="sale_price"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_ssi_product_form" model="ir.ui.view">
+            <field name="name">ssi.product.form</field>
+            <field name="model">ssi.product</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="default_code"/>
+                                <field name="barcode"/>
+                                <field name="qty_on_hand"/>
+                            </group>
+                            <group>
+                                <field name="cost_price"/>
+                                <field name="sale_price"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Stock par emplacement">
+                                <field name="quant_ids">
+                                    <tree>
+                                        <field name="location_id"/>
+                                        <field name="quantity"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Mouvements">
+                                <field name="move_ids" readonly="True">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="date"/>
+                                        <field name="location_from_id"/>
+                                        <field name="location_to_id"/>
+                                        <field name="quantity"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_ssi_product_search" model="ir.ui.view">
+            <field name="name">ssi.product.search</field>
+            <field name="model">ssi.product</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="default_code"/>
+                    <field name="barcode"/>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

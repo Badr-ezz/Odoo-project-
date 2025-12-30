@@ -1,0 +1,27 @@
+{
+    'name': 'Stock Simple + Inventaire',
+    'version': '17.0.1.0.0',
+    'category': 'Inventory',
+    'summary': 'Module de gestion de stock simple avec inventaire',
+    'description': 'Module pour gérer les produits, emplacements, mouvements de stock et inventaires.',
+    'author': 'Votre Nom',
+    'website': 'https://www.example.com',
+    'license': 'LGPL-3',
+    'depends': ['base', 'mail'],
+    'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
+        'data/data.xml',
+        'views/product_views.xml',
+        'views/location_views.xml',
+        'views/move_views.xml',
+        'views/inventory_views.xml',
+        'views/menus.xml',
+    ],
+    'demo': [
+        'data/demo.xml',
+    ],
+    'application': True,
+    'installable': True,
+    'auto_install': False,
+}

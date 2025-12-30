@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Séquences -->
+        <record id="seq_ssi_move" model="ir.sequence">
+            <field name="name">SSI Move</field>
+            <field name="code">ssi.move</field>
+            <field name="prefix">MOVE-</field>
+            <field name="padding">5</field>
+        </record>
+        <record id="seq_ssi_inventory" model="ir.sequence">
+            <field name="name">SSI Inventory</field>
+            <field name="code">ssi.inventory</field>
+            <field name="prefix">INV-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <!-- Emplacements par défaut -->
+        <record id="location_stock" model="ssi.location">
+            <field name="name">Stock</field>
+            <field name="usage">internal</field>
+        </record>
+        <record id="location_supplier" model="ssi.location">
+            <field name="name">Fournisseurs</field>
+            <field name="usage">supplier</field>
+        </record>
+        <record id="location_customer" model="ssi.location">
+            <field name="name">Clients</field>
+            <field name="usage">customer</field>
+        </record>
+        <record id="location_inventory" model="ssi.location">
+            <field name="name">Ajustement Inventaire</field>
+            <field name="usage">inventory</field>
+        </record>
+    </data>
+</odoo>

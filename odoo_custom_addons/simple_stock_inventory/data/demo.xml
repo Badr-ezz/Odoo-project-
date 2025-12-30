@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Produits de démonstration -->
+        <record id="demo_product_laptop" model="ssi.product">
+            <field name="name">Laptop HP ProBook</field>
+            <field name="default_code">LAPTOP-001</field>
+            <field name="barcode">5901234123457</field>
+            <field name="cost_price">450.00</field>
+            <field name="sale_price">699.00</field>
+        </record>
+
+        <record id="demo_product_mouse" model="ssi.product">
+            <field name="name">Souris sans fil Logitech</field>
+            <field name="default_code">MOUSE-001</field>
+            <field name="barcode">5901234123458</field>
+            <field name="cost_price">15.00</field>
+            <field name="sale_price">29.99</field>
+        </record>
+
+        <record id="demo_product_keyboard" model="ssi.product">
+            <field name="name">Clavier mécanique</field>
+            <field name="default_code">KEYB-001</field>
+            <field name="barcode">5901234123459</field>
+            <field name="cost_price">35.00</field>
+            <field name="sale_price">79.99</field>
+        </record>
+
+        <record id="demo_product_monitor" model="ssi.product">
+            <field name="name">Écran Dell 27 pouces</field>
+            <field name="default_code">MON-001</field>
+            <field name="barcode">5901234123460</field>
+            <field name="cost_price">180.00</field>
+            <field name="sale_price">349.00</field>
+        </record>
+
+        <record id="demo_product_headset" model="ssi.product">
+            <field name="name">Casque audio Bluetooth</field>
+            <field name="default_code">HEAD-001</field>
+            <field name="barcode">5901234123461</field>
+            <field name="cost_price">25.00</field>
+            <field name="sale_price">59.99</field>
+        </record>
+
+        <record id="demo_product_usb_cable" model="ssi.product">
+            <field name="name">Câble USB-C 2m</field>
+            <field name="default_code">CABLE-001</field>
+            <field name="barcode">5901234123462</field>
+            <field name="cost_price">3.00</field>
+            <field name="sale_price">12.99</field>
+        </record>
+
+        <!-- Emplacements supplémentaires -->
+        <record id="demo_location_warehouse_a" model="ssi.location">
+            <field name="name">Entrepôt A</field>
+            <field name="usage">internal</field>
+        </record>
+
+        <record id="demo_location_warehouse_b" model="ssi.location">
+            <field name="name">Entrepôt B</field>
+            <field name="usage">internal</field>
+        </record>
+
+        <!-- Quants (Stock initial) -->
+        <record id="demo_quant_laptop_stock" model="ssi.quant">
+            <field name="product_id" ref="demo_product_laptop"/>
+            <field name="location_id" ref="location_stock"/>
+            <field name="quantity">25</field>
+        </record>
+
+        <record id="demo_quant_mouse_stock" model="ssi.quant">
+            <field name="product_id" ref="demo_product_mouse"/>
+            <field name="location_id" ref="location_stock"/>
+            <field name="quantity">150</field>
+        </record>
+
+        <record id="demo_quant_keyboard_stock" model="ssi.quant">
+            <field name="product_id" ref="demo_product_keyboard"/>
+            <field name="location_id" ref="location_stock"/>
+            <field name="quantity">80</field>
+        </record>
+
+        <record id="demo_quant_monitor_stock" model="ssi.quant">
+            <field name="product_id" ref="demo_product_monitor"/>
+            <field name="location_id" ref="location_stock"/>
+            <field name="quantity">40</field>
+        </record>
+
+        <record id="demo_quant_headset_warehouse_a" model="ssi.quant">
+            <field name="product_id" ref="demo_product_headset"/>
+            <field name="location_id" ref="demo_location_warehouse_a"/>
+            <field name="quantity">60</field>
+        </record>
+
+        <record id="demo_quant_usb_cable_warehouse_b" model="ssi.quant">
+            <field name="product_id" ref="demo_product_usb_cable"/>
+            <field name="location_id" ref="demo_location_warehouse_b"/>
+            <field name="quantity">500</field>
+        </record>
+
+        <!-- Mouvements de démonstration (en brouillon) -->
+        <record id="demo_move_entry_laptop" model="ssi.move">
+            <field name="name">MOVE-DEMO-001</field>
+            <field name="product_id" ref="demo_product_laptop"/>
+            <field name="location_from_id" ref="location_supplier"/>
+            <field name="location_to_id" ref="location_stock"/>
+            <field name="quantity">10</field>
+            <field name="state">draft</field>
+            <field name="note">Réception fournisseur - Laptops</field>
+        </record>
+
+        <record id="demo_move_transfer" model="ssi.move">
+            <field name="name">MOVE-DEMO-002</field>
+            <field name="product_id" ref="demo_product_mouse"/>
+            <field name="location_from_id" ref="location_stock"/>
+            <field name="location_to_id" ref="demo_location_warehouse_a"/>
+            <field name="quantity">30</field>
+            <field name="state">draft</field>
+            <field name="note">Transfert vers Entrepôt A</field>
+        </record>
+
+        <record id="demo_move_out" model="ssi.move">
+            <field name="name">MOVE-DEMO-003</field>
+            <field name="product_id" ref="demo_product_keyboard"/>
+            <field name="location_from_id" ref="location_stock"/>
+            <field name="location_to_id" ref="location_customer"/>
+            <field name="quantity">5</field>
+            <field name="state">draft</field>
+            <field name="note">Livraison client</field>
+        </record>
+    </data>
+</odoo>

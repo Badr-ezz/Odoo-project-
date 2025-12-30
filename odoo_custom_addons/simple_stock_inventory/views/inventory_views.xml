@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_ssi_inventory_tree" model="ir.ui.view">
+            <field name="name">ssi.inventory.tree</field>
+            <field name="model">ssi.inventory</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="location_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_ssi_inventory_form" model="ir.ui.view">
+            <field name="name">ssi.inventory.form</field>
+            <field name="model">ssi.inventory</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_add_all_products" string="Ajouter tous les produits" type="object" invisible="state != 'draft'"/>
+                        <button name="action_validate" string="Valider inventaire" type="object" invisible="state != 'draft'" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="date" readonly="state == 'done'"/>
+                            <field name="location_id" readonly="state == 'done'"/>
+                        </group>
+                        <notebook>
+                            <page string="Lignes">
+                                <field name="line_ids" readonly="state == 'done'">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="theoretical_qty"/>
+                                        <field name="counted_qty"/>
+                                        <field name="difference"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_ssi_inventory_search" model="ir.ui.view">
+            <field name="name">ssi.inventory.search</field>
+            <field name="model">ssi.inventory</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="location_id"/>
+                    <field name="state"/>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

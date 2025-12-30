@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Catégorie de module -->
+        <record id="module_category_ssi" model="ir.module.category">
+            <field name="name">Stock Simple</field>
+            <field name="sequence">50</field>
+        </record>
+
+        <!-- Groupes -->
+        <record id="group_ssi_user" model="res.groups">
+            <field name="name">Utilisateur</field>
+            <field name="category_id" ref="module_category_ssi"/>
+        </record>
+        <record id="group_ssi_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="module_category_ssi"/>
+            <field name="implied_ids" eval="[(4, ref('group_ssi_user'))]"/>
+        </record>
+    </data>
+</odoo>
